@@ -1,16 +1,22 @@
 "use client";
+import axios from "axios";
 import Header from "@/components/Header";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MessagesSquare } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { formSchema } from "@/lib/constants";
+
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { ChatCompletionRequestMessage } from "openai";
+import { formSchema } from "@/lib/constants";
 
 const Chat = () => {
+  const router = useRouter();
+  const [msgs, setMsgs] = useState<ChatCompletionRequestMessage[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -21,7 +27,26 @@ const Chat = () => {
   const isLoading = form.formState.isSubmitting;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      const userMsg: ChatCompletionRequestMessage = {
+        role: "user",
+        content: values.prompt,
+      };
+      console.log("trigger try");
+      const newMsgs = [...msgs, userMsg];
+
+      const response = await axios.post("/api/chat", {
+        messages: newMsgs,
+      });
+      setMsgs((curr) => [...curr, userMsg, response.data]);
+      form.reset();
+    } catch (error: any) {
+      console.log("trigger catch");
+      console.log(error);
+    } finally {
+      router.refresh();
+      console.log("trigger final");
+    }
   };
   return (
     <div>
@@ -40,7 +65,7 @@ const Chat = () => {
               className="rounded-lg border w-full p-4 px-3 md:px-6 focus-within:shadow-sm grid grid-cols-12 gap-2"
             >
               <FormField
-                name="Prompt"
+                name="prompt"
                 render={({ field }) => (
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
@@ -63,7 +88,13 @@ const Chat = () => {
             </form>
           </Form>
         </div>
-        <div className="space-y-4 mt-4">Messages</div>
+        <div className="space-y-4 mt-4">
+          <div className="flex flex-col-reverse gap-y-4">
+            {msgs.map((msg) => (
+              <div key={msg.content}>{msg.content}</div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
