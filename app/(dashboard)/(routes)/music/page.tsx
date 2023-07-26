@@ -16,6 +16,7 @@ import { formSchema } from "@/lib/constants";
 import { Empty } from "@/components/Empty";
 import { Loader } from "@/components/Loader";
 import { useProModal } from "@/hooks/useProModal";
+import toast from "react-hot-toast";
 
 const MusicGen = () => {
   const router = useRouter();
@@ -40,6 +41,8 @@ const MusicGen = () => {
     } catch (error: any) {
       if (error?.response?.status === 403) {
         proModal.onOpen();
+      } else {
+        toast.error("Something went wrong!");
       }
     } finally {
       router.refresh();

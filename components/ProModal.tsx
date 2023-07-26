@@ -15,9 +15,26 @@ import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { Check, Rocket } from "lucide-react";
 import { Button } from "./ui/button";
+import axios from "axios";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ProModal = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const proModal = useProModal();
+
+  const onSub = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get("/api/stripe");
+      window.location.href = response.data.url;
+    } catch (error) {
+      toast.error("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
       <DialogContent>
@@ -48,7 +65,13 @@ const ProModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button size="lg" variant="prem" className="w-full">
+          <Button
+            disabled={loading}
+            onClick={onSub}
+            size="lg"
+            variant="prem"
+            className="w-full"
+          >
             Upgrade
             <Rocket className="w-4 h-4 wl-2 fill-white" />
           </Button>

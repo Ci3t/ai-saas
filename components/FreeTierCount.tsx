@@ -10,9 +10,13 @@ import { useProModal } from "@/hooks/useProModal";
 
 interface FreeTierProps {
   apiLimitCount: number;
+  isPro: boolean;
 }
 
-export const FreeTierCount = ({ apiLimitCount = 0 }: FreeTierProps) => {
+export const FreeTierCount = ({
+  apiLimitCount = 0,
+  isPro = false,
+}: FreeTierProps) => {
   const proModal = useProModal();
   const [isMounted, setIsMounter] = useState(false);
 
@@ -21,6 +25,8 @@ export const FreeTierCount = ({ apiLimitCount = 0 }: FreeTierProps) => {
   }, []);
 
   if (!isMounted) return null;
+
+  if (isPro) return null;
 
   return (
     <div className="px-3">
