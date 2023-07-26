@@ -37,7 +37,7 @@ const Chat = () => {
         role: "user",
         content: values.prompt,
       };
-      console.log("trigger try");
+
       const newMsgs = [...msgs, userMsg];
 
       const response = await axios.post("/api/chat", {
@@ -46,11 +46,9 @@ const Chat = () => {
       setMsgs((curr) => [...curr, userMsg, response.data]);
       form.reset();
     } catch (error: any) {
-      console.log("trigger catch");
       console.log(error);
     } finally {
       router.refresh();
-      console.log("trigger final");
     }
   };
   return (
