@@ -4,6 +4,7 @@ import React from "react";
 
 interface HeaderProps {
   title: string;
+  subTitle?: string;
   description: string;
   Icon: LucideIcon;
   iconColor?: string;
@@ -12,6 +13,7 @@ interface HeaderProps {
 
 const Header = ({
   title,
+  subTitle,
   description,
   Icon,
   iconColor,
@@ -24,6 +26,7 @@ const Header = ({
       </div>
       <div>
         <h2 className="text-3xl font-bold">{title}</h2>
+        <h4 className="text-1xl font-bold text-muted-foreground">{subTitle}</h4>
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>
     </div>
