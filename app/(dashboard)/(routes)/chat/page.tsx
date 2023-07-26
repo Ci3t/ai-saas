@@ -18,9 +18,11 @@ import { Loader } from "@/components/Loader";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/UserAvatar";
 import { ZeroTwoAvatar } from "@/components/ZeroTwoAvatar";
+import { useProModal } from "@/hooks/useProModal";
 
 const Chat = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [msgs, setMsgs] = useState<ChatCompletionRequestMessage[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,7 +48,9 @@ const Chat = () => {
       setMsgs((curr) => [...curr, userMsg, response.data]);
       form.reset();
     } catch (error: any) {
-      console.log(error);
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }

@@ -18,9 +18,11 @@ import { Loader } from "@/components/Loader";
 import { cn } from "@/lib/utils";
 import { UserAvatar } from "@/components/UserAvatar";
 import { ZeroTwoAvatar } from "@/components/ZeroTwoAvatar";
+import { useProModal } from "@/hooks/useProModal";
 
 const Code = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [msgs, setMsgs] = useState<ChatCompletionRequestMessage[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,7 +39,7 @@ const Code = () => {
         role: "user",
         content: values.prompt,
       };
-      console.log("trigger try");
+
       const newMsgs = [...msgs, userMsg];
 
       const response = await axios.post("/api/code", {
@@ -46,11 +48,11 @@ const Code = () => {
       setMsgs((curr) => [...curr, userMsg, response.data]);
       form.reset();
     } catch (error: any) {
-      console.log("trigger catch");
-      console.log(error);
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
-      console.log("trigger final");
     }
   };
   return (

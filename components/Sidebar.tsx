@@ -14,6 +14,7 @@ import {
   Settings2,
   Youtube,
 } from "lucide-react";
+import { FreeTierCount } from "./FreeTierCount";
 
 const montserrat = Lobster({ weight: "400", subsets: ["latin"] });
 
@@ -61,7 +62,11 @@ const routes = [
   },
 ];
 
-const Sidebar = () => {
+interface SidebarProp {
+  apiLimitCount: number;
+}
+
+const Sidebar = ({ apiLimitCount }: SidebarProp) => {
   const pathname = usePathname();
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
@@ -94,6 +99,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
+      <FreeTierCount apiLimitCount={apiLimitCount} />
     </div>
   );
 };

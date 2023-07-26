@@ -24,9 +24,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardFooter } from "@/components/ui/card";
+import { useProModal } from "@/hooks/useProModal";
 
 const ImageGen = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [imgs, setImgs] = useState<string[]>([]);
   const form = useForm<z.infer<typeof formImageSchema>>({
     resolver: zodResolver(formImageSchema),
@@ -47,7 +49,9 @@ const ImageGen = () => {
       setImgs(urls);
       form.reset();
     } catch (error: any) {
-      console.log(error);
+      if (error?.response?.status === 403) {
+        proModal.onOpen();
+      }
     } finally {
       router.refresh();
     }
