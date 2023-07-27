@@ -14,7 +14,7 @@ export const HomeHero = () => {
           <TypewriterComponent
             options={{
               strings: [
-                "Chat",
+                "Very Friendly Chatbot",
                 "Amazing Image Generation",
                 "Cool Music Generation",
                 "Great Video Generation",

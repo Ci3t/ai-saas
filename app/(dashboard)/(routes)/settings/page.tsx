@@ -15,7 +15,7 @@ const SettingsPage = async () => {
         bgColor="bg-white/40"
       />
       <div className="px-4 lg:px-8 space-y-4">
-        <div className="text-mute-foreground text-sm">
+        <div className="text-muted text-sm ">
           {isPro ? "You currently on Pro plan." : "You currently on Free Plan"}
         </div>
         <SubscriptionBtn isPro={isPro} />

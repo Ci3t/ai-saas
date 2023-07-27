@@ -7,7 +7,7 @@ const Home = () => {
     <div className="h-full">
       <HomeNav />
       <HomeHero />
-      <HomeContent />
+      {/* <HomeContent /> */}
     </div>
   );
 };
