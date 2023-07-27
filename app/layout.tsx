@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Zero Two",
-  description: "AI Saas App",
+  description: "Smart Ai Bot with alot of Generation Types via prompts",
 };
 
 export default function RootLayout({
