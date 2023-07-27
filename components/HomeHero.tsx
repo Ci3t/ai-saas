@@ -30,7 +30,7 @@ export const HomeHero = () => {
         Create Amazing content with ZeroTwo
       </div>
       <div>
-        <Link href={isSignedIn ? "/dashboard" : "/"}>
+        <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button
             variant="glow"
             className="md:text-lg p-4 md:p-6 rounded-md font-semibold"
