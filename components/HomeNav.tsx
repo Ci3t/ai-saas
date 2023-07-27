@@ -27,7 +27,7 @@ export const HomeNav = () => {
       </Link>
       <div className="flex items-center gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button variant="outline" className="rounded-full">
+          <Button variant="secondary" className="rounded-full">
             Get Started
           </Button>
         </Link>
