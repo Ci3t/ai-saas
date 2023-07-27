@@ -26,7 +26,7 @@ const SubscriptionBtn = ({ isPro = false }: SubscriptionBtnProps) => {
   return (
     <Button
       disabled={loading}
-      variant={isPro ? "default" : "prem"}
+      variant={isPro ? "secondary" : "prem"}
       onClick={onClick}
     >
       {isPro ? "Manage Subscription" : "Upgrade"}

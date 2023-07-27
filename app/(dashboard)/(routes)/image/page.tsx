@@ -81,7 +81,7 @@ const ImageGen = () => {
                   <FormItem className="col-span-12 lg:col-span-6">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-[#e7e7e7]"
                         disabled={isLoading}
                         placeholder="Example: a monkey racing a lion on mars"
                         {...field}
@@ -94,7 +94,7 @@ const ImageGen = () => {
                 control={form.control}
                 name="amount"
                 render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
+                  <FormItem className="col-span-12 lg:col-span-2 text-[#e7e7e7]">
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -121,7 +121,7 @@ const ImageGen = () => {
                 control={form.control}
                 name="resolution"
                 render={({ field }) => (
-                  <FormItem className="col-span-12 lg:col-span-2">
+                  <FormItem className="col-span-12 lg:col-span-2 text-[#e7e7e7]">
                     <Select
                       disabled={isLoading}
                       onValueChange={field.onChange}
@@ -148,6 +148,7 @@ const ImageGen = () => {
               <Button
                 className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
+                variant="secondary"
               >
                 Send
               </Button>
@@ -156,7 +157,7 @@ const ImageGen = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-20">
+            <div className="p-20 bg-[#1d1d1d]">
               <Loader title="ZeroTwo Generating..." />
             </div>
           )}
@@ -175,7 +176,7 @@ const ImageGen = () => {
                 <CardFooter className="p-2">
                   <Button
                     variant={"secondary"}
-                    className="w-full "
+                    className="w-full hover:bg-[#e7e7e7] bg-[#1d1d1d] text-[#e7e7e7] hover:text-[#1d1d1d]"
                     onClick={() => window.open(img)}
                   >
                     <DownloadIcon className="h-4 w-4 mr-2" />

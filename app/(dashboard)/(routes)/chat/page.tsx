@@ -80,7 +80,7 @@ const Chat = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 text-[#e7e7e7] outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         placeholder="How are you today?"
                         {...field}
@@ -92,6 +92,7 @@ const Chat = () => {
               <Button
                 className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
+                variant="secondary"
               >
                 Send
               </Button>
@@ -100,7 +101,7 @@ const Chat = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-[#1d1d1d]">
               <Loader title="ZeroTwo Typing..." />
             </div>
           )}
@@ -116,8 +117,8 @@ const Chat = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   msg.role === "user"
-                    ? "bg-white border border-black/10"
-                    : "bg-muted",
+                    ? "bg-[#1d1d1d] text-[#e7e7e7] border border-black/10"
+                    : "bg-[#14181d] text-[#e7e7e7]",
                 )}
                 key={msg.content}
               >

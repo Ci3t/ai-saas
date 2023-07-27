@@ -71,7 +71,7 @@ const MusicGen = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-[#e7e7e7]"
                         disabled={isLoading}
                         placeholder="Example: fantasy, alien space ship flying over planet, engines"
                         {...field}
@@ -83,6 +83,7 @@ const MusicGen = () => {
               <Button
                 className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
+                variant="secondary"
               >
                 Send
               </Button>
@@ -91,7 +92,7 @@ const MusicGen = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-[#1d1d1d] ">
               <Loader title="ZeroTwo Typing..." />
             </div>
           )}

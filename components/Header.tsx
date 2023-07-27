@@ -25,7 +25,7 @@ const Header = ({
         <Icon className={cn("w-10 h-10", iconColor)} />
       </div>
       <div>
-        <h2 className="text-3xl font-bold">{title}</h2>
+        <h2 className="text-3xl font-bold text-[#e7e7e7]">{title}</h2>
         <h4 className="text-1xl font-bold text-muted-foreground">{subTitle}</h4>
         <p className="text-sm text-muted-foreground">{description}</p>
       </div>

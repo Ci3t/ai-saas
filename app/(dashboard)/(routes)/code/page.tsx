@@ -80,7 +80,7 @@ const Code = () => {
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
                       <Input
-                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
+                        className="border-0 text-[#e7e7e7] outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isLoading}
                         placeholder="Example: how to make simple toggle button"
                         {...field}
@@ -92,6 +92,7 @@ const Code = () => {
               <Button
                 className="col-span-12 lg:col-span-2 w-full"
                 disabled={isLoading}
+                variant="secondary"
               >
                 Send
               </Button>
@@ -100,7 +101,7 @@ const Code = () => {
         </div>
         <div className="space-y-4 mt-4">
           {isLoading && (
-            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
+            <div className="p-8 rounded-lg w-full flex items-center justify-center bg-[#1d1d1d]">
               <Loader title="ZeroTwo Typing..." />
             </div>
           )}
@@ -116,8 +117,8 @@ const Code = () => {
                 className={cn(
                   "p-8 w-full flex items-start gap-x-8 rounded-lg",
                   msg.role === "user"
-                    ? "bg-white border border-black/10"
-                    : "bg-muted",
+                    ? "bg-[#1d1d1d] text-[#e7e7e7] border border-black/10"
+                    : "bg-[#14181d] text-[#e7e7e7]",
                 )}
                 key={msg.content}
               >
@@ -125,12 +126,12 @@ const Code = () => {
                 <ReactMarkdown
                   components={{
                     pre: ({ node, ...props }) => (
-                      <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
+                      <div className="overflow-auto w-full my-2 bg-black/50 p-2 rounded-lg">
                         <pre {...props} />
                       </div>
                     ),
                     code: ({ node, ...props }) => (
-                      <code className="bg-black/10 rounded-lg p-1" {...props} />
+                      <code className="bg-black/50 rounded-lg p-1" {...props} />
                     ),
                   }}
                   className="text-sm overflow-hidden leading-7"

@@ -70,7 +70,7 @@ interface SidebarProp {
 const Sidebar = ({ apiLimitCount, isPro = false }: SidebarProp) => {
   const pathname = usePathname();
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
+    <div className="space-y-4 py-4 flex flex-col h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black border-l-0 border-r-2 border-r-gray-900 text-white">
       <div className="px-3 py-2 flex-1">
         <Link href="/dashboard" className="flex items-center pl-3 mb-14">
           <div className="relative w-10 h-9 mr-4">

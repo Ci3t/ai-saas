@@ -6,7 +6,7 @@ interface LoaderProps {
 
 export const Loader = ({ title }: LoaderProps) => {
   return (
-    <div className="h-full flex flex-col gap-y-4 items-center justify-center">
+    <div className="h-full flex flex-col   text-[#e7e7e7] gap-y-4 items-center justify-center">
       <div className="w-10 h-10 relative animate-bounce">
         <Image alt="logo" fill src="/logo2.png" />
       </div>
